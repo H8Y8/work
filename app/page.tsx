@@ -198,7 +198,7 @@ export default function Home() {
     const pitch = "我了解凌華不是消費性電腦公司，而是以工業電腦、嵌入式運算、自動化控制與邊緣 AI 平台為主的 B2B 公司。這類產品具有高混低量、客製化與長生命週期特性，因此 IE 的價值不只是改善單站工時，而是整合產品組合、產能、Layout、測試資源、成本動因與工廠 KPI。我會從現場數據出發，把改善轉換成產能、成本、投資效益與管理決策。";
     await navigator.clipboard.writeText(pitch);
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    window.setTimeout(() => setCopied(false), 3000);
   };
 
   return (
@@ -429,7 +429,7 @@ export default function Home() {
         </div>
 
         <article className="pitch-card">
-          <div className="pitch-head"><div><p className="label">60-SECOND COMPANY PITCH</p><h3>公司理解說法</h3></div><button type="button" onClick={copyPitch}>{copied ? "已複製 ✓" : "複製回答"}</button></div>
+          <div className="pitch-head"><div><p className="label">60-SECOND COMPANY PITCH</p><h3>公司理解說法</h3></div><button type="button" onClick={copyPitch} aria-live="polite">{copied ? "已複製 ✓" : "複製回答"}</button></div>
           <blockquote>我了解凌華不是消費性電腦公司，而是以工業電腦、嵌入式運算、自動化控制與邊緣 AI 平台為主的 B2B 公司。這類產品具有高混低量、客製化與長生命週期特性，因此 IE 的價值不只是改善單站工時，而是整合產品組合、產能、Layout、測試資源、成本動因與工廠 KPI。我會從現場數據出發，把改善轉換成產能、成本、投資效益與管理決策。</blockquote>
           <p className="pitch-note">不要逐字背。把最後一句換成你最強的實際案例，可信度會更高。</p>
         </article>
@@ -475,7 +475,7 @@ export default function Home() {
             {selectedTerm.alias && <p className="term-alias">{selectedTerm.alias}</p>}
             <p className="term-definition">{selectedTerm.definition}</p>
             <div className="interview-connection"><span>面試連結</span><p>{selectedTerm.interview}</p></div>
-            <button className="browse-all" onClick={() => { setSelectedTerm(null); setGlossaryOpen(true); }} type="button">瀏覽完整名詞庫 →</button>
+            <button className="browse-all" onClick={() => { setGlossaryQuery(""); setSelectedTerm(null); setGlossaryOpen(true); }} type="button">瀏覽完整名詞庫 →</button>
           </section>
         </div>
       )}

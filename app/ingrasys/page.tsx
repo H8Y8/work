@@ -151,7 +151,7 @@ export default function IngrasysPage() {
     const pitch = "我了解鴻佰是鴻海集團旗下的雲端基礎設施供應商，產品從伺服器、儲存、GPU 平台延伸到整櫃 AI 系統與液冷方案。對 IE 而言，AI Server 的挑戰不只在組裝效率，而是高價物料、複雜組態、測試瓶頸、NPI 爬坡與全球交付。我會以標準工時、產能模型與現場數據找出限制點，再把 Layout、線平衡或自動化方案量化成產出、品質、交期與 ROI。";
     await navigator.clipboard.writeText(pitch);
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    window.setTimeout(() => setCopied(false), 3000);
   };
 
   return (
@@ -337,7 +337,7 @@ export default function IngrasysPage() {
         </div>
 
         <article className="pitch-card ing-pitch">
-          <div className="pitch-head"><div><p className="label">60-SECOND COMPANY PITCH</p><h3>公司理解說法</h3></div><button type="button" onClick={copyPitch}>{copied ? "已複製 ✓" : "複製回答"}</button></div>
+          <div className="pitch-head"><div><p className="label">60-SECOND COMPANY PITCH</p><h3>公司理解說法</h3></div><button type="button" onClick={copyPitch} aria-live="polite">{copied ? "已複製 ✓" : "複製回答"}</button></div>
           <blockquote>我了解鴻佰是鴻海集團旗下的雲端基礎設施供應商，產品從伺服器、儲存、GPU 平台延伸到整櫃 AI 系統與液冷方案。對 IE 而言，AI Server 的挑戰不只在組裝效率，而是高價物料、複雜組態、測試瓶頸、NPI 爬坡與全球交付。我會以標準工時、產能模型與現場數據找出限制點，再把 Layout、線平衡或自動化方案量化成產出、品質、交期與 ROI。</blockquote>
           <p className="pitch-note">把最後一句換成你的真實案例與數字；若沒有 AI Server 經驗，就說明可移轉的方法，不要假裝做過。</p>
         </article>
@@ -384,7 +384,7 @@ export default function IngrasysPage() {
             {selectedTerm.alias && <p className="term-alias">{selectedTerm.alias}</p>}
             <p className="term-definition">{selectedTerm.definition}</p>
             <div className="interview-connection"><span>IE 面試連結</span><p>{selectedTerm.interview}</p></div>
-            <button className="browse-all" onClick={() => { setSelectedTerm(null); setGlossaryOpen(true); }} type="button">瀏覽完整名詞庫 →</button>
+            <button className="browse-all" onClick={() => { setGlossaryQuery(""); setSelectedTerm(null); setGlossaryOpen(true); }} type="button">瀏覽完整名詞庫 →</button>
           </section>
         </div>
       )}

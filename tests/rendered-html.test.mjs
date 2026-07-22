@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -57,4 +58,22 @@ test("server-renders the Ingrasys IE interview guide", async () => {
   assert.match(html, /aria-current="location"/);
   assert.match(html, /href="https:\/\/www\.ingrasys\.com\/company\/about\/"/);
   assert.match(html, /非官方經驗提醒/);
+});
+
+test("ships mobile-first overflow and contrast safeguards", async () => {
+  const adlinkPage = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const ingrasysPage = await readFile(new URL("../app/ingrasys/page.tsx", import.meta.url), "utf8");
+  const sharedCss = await readFile(new URL("../app/claude-theme.css", import.meta.url), "utf8");
+  const ingrasysCss = await readFile(new URL("../app/ingrasys/ingrasys.css", import.meta.url), "utf8");
+
+  assert.match(sharedCss, /@media \(max-width: 699px\)/);
+  assert.match(sharedCss, /\.process-track\s*\{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(sharedCss, /\.glossary-list p\s*\{[\s\S]*?-webkit-line-clamp: unset/);
+  assert.match(sharedCss, /--muted-light: #706c65/);
+  assert.match(sharedCss, /\.section-no\s*\{[\s\S]*?color: var\(--signal-dark\)/);
+  assert.match(sharedCss, /\.role-equation strong\s*\{[\s\S]*?background: var\(--ink\);[\s\S]*?color: var\(--paper\)/);
+  assert.match(ingrasysCss, /\.ingrasys-site \.ing-factory\s*\{[\s\S]*?background: var\(--ink-2\)/);
+  assert.match(ingrasysCss, /\.lighthouse-flow\s*\{[\s\S]*?grid-template-columns: 1fr/);
+  assert.match(adlinkPage, /setGlossaryQuery\(""\); setSelectedTerm\(null\); setGlossaryOpen\(true\)/);
+  assert.match(ingrasysPage, /setGlossaryQuery\(""\); setSelectedTerm\(null\); setGlossaryOpen\(true\)/);
 });

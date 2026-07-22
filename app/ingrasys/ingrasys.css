@@ -283,6 +283,31 @@
   color: #d19a82;
 }
 
+.ingrasys-site .ing-factory {
+  background: var(--ink-2);
+  color: var(--paper);
+}
+
+.ingrasys-site .ing-factory .section-heading {
+  border-color: #55524c;
+}
+
+.ingrasys-site .ing-factory .section-heading h2,
+.ingrasys-site .ing-factory .subheading h3 {
+  color: #f7f4ed;
+}
+
+.ingrasys-site .ing-factory .section-heading > p,
+.ingrasys-site .ing-factory .subheading > p,
+.ingrasys-site .ing-factory .section-no {
+  color: #cbc6bc;
+}
+
+.ingrasys-site .ing-factory .eyebrow,
+.ingrasys-site .ing-factory .label {
+  color: #a9c0ba;
+}
+
 .lighthouse-card {
   padding: 24px 20px;
   border: 1px solid #4d4b45;
@@ -623,6 +648,157 @@
 
   .ingrasys-site .company-switch {
     padding-inline: 9px;
+  }
+}
+
+@media (max-width: 699px) {
+  .ing-rack-art {
+    right: -54px;
+    opacity: .35;
+  }
+
+  .ing-hero h1 {
+    font-size: clamp(39px, 12vw, 56px);
+    line-height: 1.08;
+  }
+
+  .ing-thesis > p {
+    color: #504d48;
+    font-size: 16px;
+  }
+
+  .ing-levels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: visible;
+  }
+
+  .ing-levels > span {
+    min-width: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+
+  .ing-levels > span:last-child {
+    border-bottom: 0;
+  }
+
+  .ing-levels > span small {
+    color: #5c5953;
+    font-size: 12px;
+  }
+
+  .ing-levels > b {
+    display: none;
+  }
+
+  .ing-company-proof p,
+  .ing-company-proof > small,
+  .ing-product-grid small,
+  .role-evidence a,
+  .metric-caveat {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .ing-company-proof > small {
+    color: #5c5953;
+  }
+
+  .metric-caveat {
+    color: #cbc6bc;
+  }
+
+  .ing-product-grid p,
+  .role-evidence p,
+  .ie-module-grid p,
+  .capacity-example > p,
+  .interview-signal p {
+    font-size: 14px;
+  }
+
+  .ing-translation-strip {
+    padding: 22px 18px;
+  }
+
+  .ing-translation-strip span {
+    color: #b8cbc6;
+    font-size: 11px;
+  }
+
+  .ing-translation-strip b {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .lighthouse-flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: visible;
+  }
+
+  .lighthouse-flow span {
+    min-width: 0;
+    padding: 11px 0;
+    border-bottom: 1px solid #45433e;
+    color: #f2eee6;
+    font-size: 12px;
+  }
+
+  .lighthouse-flow span:last-child {
+    border-bottom: 0;
+  }
+
+  .lighthouse-flow small {
+    color: #b3c8c2;
+    font-size: 11px;
+  }
+
+  .lighthouse-flow i {
+    display: none;
+  }
+
+  .official-metrics strong {
+    color: #bfd3ce;
+  }
+
+  .official-metrics span {
+    color: #ded9cf;
+    font-size: 12px;
+  }
+
+  .ing-process b {
+    color: #f0ece3;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .ing-risk-grid h4 {
+    color: #f7f4ed;
+    font-size: 21px;
+  }
+
+  .ing-risk-grid p {
+    color: #cbc6bc;
+    font-size: 14px;
+  }
+
+  .source-badge {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .capacity-formula span,
+  .interview-signal span {
+    font-size: 11px;
+  }
+
+  .capacity-formula b {
+    font-size: 18px;
+    line-height: 1.5;
   }
 }
 

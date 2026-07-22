@@ -11,7 +11,7 @@
   --paper-2: #f0eee6;
   --white: #ffffff;
   --muted: #67645f;
-  --muted-light: #8e8a83;
+  --muted-light: #706c65;
   --line: #d7d3c9;
   --line-dark: #aaa69d;
   --signal: #c96749;
@@ -26,6 +26,33 @@
   --display: "Iowan Old Style", "Palatino Linotype", "Noto Serif TC", "Songti TC", PMingLiU, Georgia, serif;
   --body: "Avenir Next", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Keep long technical content inside the viewport at every width. */
+.site,
+.site section,
+.site article,
+.site header,
+.site nav,
+.site div,
+.site aside {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.site h1,
+.site h2,
+.site h3,
+.site h4,
+.site p,
+.site li,
+.site blockquote,
+.site small,
+.site b,
+.site a,
+.site summary,
+.site button {
+  overflow-wrap: anywhere;
 }
 
 html {
@@ -381,7 +408,7 @@ input:focus-visible {
 }
 
 .section-no {
-  color: var(--signal);
+  color: var(--signal-dark);
   font-family: var(--display);
   font-size: 20px;
   font-style: italic;
@@ -693,12 +720,14 @@ input:focus-visible {
 }
 
 .role-equation i {
-  color: var(--signal);
+  color: var(--signal-dark);
   font-family: var(--display);
 }
 
 .role-equation strong {
-  color: var(--signal-dark);
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .signal-table {
@@ -869,7 +898,7 @@ input:focus-visible {
 }
 
 .method-title > span {
-  color: var(--signal);
+  color: var(--signal-dark);
   font-family: var(--display);
   font-size: 24px;
   font-style: italic;
@@ -1629,6 +1658,14 @@ footer {
     padding-inline: 0;
   }
 
+  .process-block::after {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    content: "左右滑動查看完整流程 →";
+    font-size: 12px;
+  }
+
   .method-card {
     padding: 32px;
   }
@@ -1886,6 +1923,241 @@ footer {
 
   .term:hover {
     color: var(--signal-dark);
+  }
+}
+
+@media (max-width: 699px) {
+  body {
+    font-size: 16px;
+  }
+
+  .topbar {
+    gap: 8px;
+    padding-inline: 12px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand > span:last-child {
+    min-width: 0;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .topbar-actions {
+    flex: 0 0 auto;
+    gap: 5px;
+  }
+
+  .company-switch,
+  .glossary-trigger {
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .hero-kicker,
+  .status-row,
+  .hero-footnote,
+  .eyebrow,
+  .label {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .hero-footnote,
+  .source-note,
+  footer {
+    color: var(--muted);
+  }
+
+  .section {
+    padding: 68px 16px;
+  }
+
+  .section-heading > p,
+  .subheading > p,
+  .positioning-statement blockquote,
+  .hero-lede,
+  .pitch-card blockquote,
+  .gold-question p {
+    text-wrap: pretty;
+  }
+
+  .fact-strip,
+  .product-map small,
+  .deep-dive-content ul,
+  .method-steps p,
+  .kpi-levels ul,
+  .case-card ol,
+  .question-groups ul,
+  .pitch-note,
+  .source-note {
+    font-size: 13px;
+  }
+
+  .tag-cloud span,
+  .budget-tags span,
+  .source-list small,
+  .term-alias,
+  .interview-connection p,
+  .glossary-list small,
+  .glossary-list p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .process-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 26px 0 0;
+    padding: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .process-step {
+    min-width: 0;
+    min-height: 108px;
+    padding: 14px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+
+  .process-step:last-child {
+    border-right: 1px solid var(--line);
+  }
+
+  .process-step b {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .answer-track {
+    grid-template-columns: 1fr;
+  }
+
+  .answer-track span {
+    padding: 11px 0;
+    color: #eee9df;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .pitch-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .pitch-head button {
+    width: auto;
+    min-width: 84px;
+  }
+
+  .question-groups summary {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .question-groups summary span:first-child {
+    min-width: 0;
+  }
+
+  .question-groups summary span:last-child {
+    flex: 0 0 auto;
+    font-size: 11px;
+  }
+
+  .checklist-items label {
+    color: #e4dfd5;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .checklist-items input:checked + span {
+    color: #bcb7ad;
+  }
+
+  .source-list a {
+    grid-template-columns: 26px minmax(0, 1fr) 18px;
+    align-items: start;
+  }
+
+  .source-list b {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .source-list small {
+    margin-top: 5px;
+  }
+
+  .mobile-nav {
+    right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    left: 8px;
+    height: auto;
+    min-height: 64px;
+  }
+
+  .mobile-nav button,
+  .mobile-nav button span {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .mobile-nav button.active,
+  .mobile-nav button.active span {
+    color: var(--signal-dark);
+  }
+
+  .glossary-panel {
+    padding-inline: 16px;
+  }
+
+  .glossary-list > button {
+    grid-template-columns: 48px minmax(0, 1fr) 18px;
+    gap: 9px;
+  }
+
+  .glossary-list p {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  .category-tag,
+  .glossary-count {
+    color: var(--signal-dark);
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 359px) {
+  .glossary-trigger {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .glossary-trigger span {
+    font-size: 19px;
+  }
+
+  .process-track {
+    grid-template-columns: 1fr;
   }
 }
 
