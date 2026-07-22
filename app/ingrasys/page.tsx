@@ -167,7 +167,7 @@ export default function IngrasysPage() {
           {navItems.map((item) => <button className={activeSection === item.id ? "active" : ""} key={item.id} onClick={() => scrollTo(item.id)} type="button" aria-current={activeSection === item.id ? "location" : undefined}><span>{item.short}</span>{item.label}</button>)}
         </nav>
         <div className="topbar-actions">
-          <Link className="company-switch" href="/" aria-label="切換至凌華科技 IE 面試手冊">凌華</Link>
+          <Link className="company-switch" href="/" aria-label="返回公司手冊首頁">公司首頁</Link>
           <button className="glossary-trigger" onClick={() => setGlossaryOpen(true)} type="button"><span aria-hidden="true">⌕</span> 名詞庫</button>
         </div>
       </header>
@@ -182,7 +182,7 @@ export default function IngrasysPage() {
             <p className="hero-lede">從 AI Server、整櫃液冷與燈塔工廠，到 Layout、標準工時、產能、自動化 ROI 的一頁面試作戰手冊。</p>
             <div className="hero-actions">
               <button className="primary-action" onClick={() => scrollTo("company")} type="button">開始複習 <span>↓</span></button>
-              <Link className="secondary-action" href="/">查看凌華 IE 手冊 <span>↗</span></Link>
+              <Link className="secondary-action" href="/adlink">查看凌華 IE 手冊 <span>↗</span></Link>
             </div>
           </div>
           <aside className="hero-brief" aria-label="公司速讀">

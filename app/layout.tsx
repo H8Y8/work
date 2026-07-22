@@ -1,26 +1,27 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./claude-theme.css";
+import "./home.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://h8y8.github.io/work/"),
-  title: "凌華科技 ADLINK｜IE 面試作戰手冊",
-  description: "凌華科技公司定位、產品、製造流程、Layout、成本、KPI 與 IE 面試準備的一頁式互動手冊。",
-  applicationName: "ADLINK Interview Field Guide",
+  title: "IE 面試準備中心｜公司面試作戰手冊",
+  description: "依公司整理產業定位、產品製造、IE 職務重點、專業名詞與面試回答框架。",
+  applicationName: "IE Interview Field Guides",
   authors: [{ name: "Interview Field Guide" }],
-  keywords: ["凌華科技", "ADLINK", "IE", "工業工程", "面試", "邊緣運算", "Edge AI", "工業電腦"],
+  keywords: ["IE", "工業工程", "面試", "凌華科技", "鴻佰科技", "ADLINK", "Ingrasys"],
   openGraph: {
     type: "website",
     locale: "zh_TW",
-    title: "凌華科技 ADLINK｜IE 面試作戰手冊",
-    description: "從 Edge AI 到工廠成本，把公司理解變成面試競爭力。",
-    images: [{ url: "og.jpg", width: 1200, height: 630, alt: "凌華科技 ADLINK IE 面試作戰手冊" }],
+    title: "IE 面試準備中心｜公司面試作戰手冊",
+    description: "選擇公司，開始準備產業、製造與 IE 面試重點。",
+    images: [{ url: "og.png", width: 1200, height: 630, alt: "IE 面試準備中心" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "凌華科技 ADLINK｜IE 面試作戰手冊",
-    description: "公司、產品、製造、成本與 KPI 的一頁面試準備。",
-    images: ["og.jpg"],
+    title: "IE 面試準備中心｜公司面試作戰手冊",
+    description: "選擇公司，開始準備產業、製造與 IE 面試重點。",
+    images: ["og.png"],
   },
 };
 
