@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 type GlossaryItem = {
   term: string;
@@ -216,9 +217,12 @@ export default function Home() {
             </button>
           ))}
         </nav>
-        <button className="glossary-trigger" onClick={() => setGlossaryOpen(true)} type="button">
-          <span aria-hidden="true">⌕</span> 名詞庫
-        </button>
+        <div className="topbar-actions">
+          <Link className="company-switch" href="/ingrasys" aria-label="切換至鴻佰科技 IE 面試手冊">鴻佰</Link>
+          <button className="glossary-trigger" onClick={() => setGlossaryOpen(true)} type="button">
+            <span aria-hidden="true">⌕</span> 名詞庫
+          </button>
+        </div>
       </header>
 
       <section className="hero" id="top">

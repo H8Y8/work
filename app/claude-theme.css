@@ -133,6 +133,26 @@ input:focus-visible {
   font-weight: 600;
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.company-switch {
+  display: inline-grid;
+  min-height: 44px;
+  padding: 0 11px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .glossary-trigger span {
   color: var(--signal);
   font-size: 19px;
@@ -1840,6 +1860,7 @@ footer {
 }
 
 @media (hover: hover) {
+  .company-switch:hover,
   .glossary-trigger:hover,
   .mode-toggle:hover {
     border-color: var(--ink);

@@ -1,7 +1,14 @@
-# ADLINK IE Field Guide · Visual Spec
+# IE Interview Field Guide · Visual Spec
 
 > Updated: 2026-07-22  
 > Direction: warm editorial, Claude-inspired, not a direct brand replica
+
+## Company navigation
+
+- `/`：凌華科技 ADLINK IE 面試手冊。
+- `/ingrasys/`：鴻佰科技 Ingrasys IE 工程師面試手冊。
+- Sticky header keeps a compact company switch on every route.
+- Each route owns its glossary, research boundary and scroll-aware bottom navigation.
 
 ## Identity scope
 
