@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./claude-theme.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://h8y8.github.io/work/"),
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0b1517",
+  themeColor: "#faf9f5",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
