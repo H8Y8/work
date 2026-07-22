@@ -118,20 +118,42 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-18% 0px -62% 0px", threshold: [0.05, 0.2, 0.5] },
-    );
-    navItems.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-    return () => observer.disconnect();
+    let animationFrame = 0;
+
+    const updateActiveSection = () => {
+      animationFrame = 0;
+      const sections = navItems
+        .map(({ id }) => document.getElementById(id))
+        .filter((section): section is HTMLElement => section !== null);
+      if (sections.length === 0) return;
+
+      // The chapter crossing this reading line is treated as the current one.
+      // A fixed upper bound keeps the behavior predictable on tall phone screens.
+      const readingLine = Math.min(window.innerHeight * 0.36, 300);
+      let current = sections[0].id;
+
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= readingLine) current = section.id;
+        else break;
+      }
+
+      const reachedPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8;
+      if (reachedPageEnd) current = sections.at(-1)?.id ?? current;
+      setActiveSection((previous) => previous === current ? previous : current);
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame === 0) animationFrame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (animationFrame !== 0) window.cancelAnimationFrame(animationFrame);
+    };
   }, []);
 
   useEffect(() => {
@@ -166,6 +188,7 @@ export default function Home() {
   const scrollTo = (id: string) => {
     const target = document.getElementById(id);
     if (!target) return;
+    setActiveSection(id);
     const top = target.getBoundingClientRect().top + window.scrollY - 72;
     window.scrollTo({ top, behavior: "smooth" });
   };
@@ -188,7 +211,7 @@ export default function Home() {
         </a>
         <nav className="desktop-nav" aria-label="主要章節">
           {navItems.map((item) => (
-            <button className={activeSection === item.id ? "active" : ""} key={item.id} onClick={() => scrollTo(item.id)} type="button">
+            <button className={activeSection === item.id ? "active" : ""} key={item.id} onClick={() => scrollTo(item.id)} type="button" aria-current={activeSection === item.id ? "location" : undefined}>
               <span>{item.short}</span>{item.label}
             </button>
           ))}
@@ -434,7 +457,7 @@ export default function Home() {
       <footer><span>ADLINK INTERVIEW FIELD GUIDE</span><span>Research-backed · Mobile-first · 2026</span></footer>
 
       <nav className="mobile-nav" aria-label="手機章節導覽">
-        {navItems.map((item) => <button className={activeSection === item.id ? "active" : ""} onClick={() => scrollTo(item.id)} type="button" key={item.id}><span>{item.short}</span>{item.label}</button>)}
+        {navItems.map((item) => <button className={activeSection === item.id ? "active" : ""} onClick={() => scrollTo(item.id)} type="button" key={item.id} aria-current={activeSection === item.id ? "location" : undefined}><span>{item.short}</span>{item.label}</button>)}
         <button onClick={() => setGlossaryOpen(true)} type="button"><span>⌕</span>名詞</button>
       </nav>
 
